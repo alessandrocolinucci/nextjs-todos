@@ -1,4 +1,6 @@
+import { Todo } from "@prisma/client";
 import Link from "next/link";
+import TodoItem from "./components/TodoItem";
 import { getTodos } from "./database/prisma.query";
 
 const Home = async () => {
@@ -15,8 +17,8 @@ const Home = async () => {
       <main className="py-4">
         <h3 className="mb-2">Here your todo list</h3>
         <ul className="pl-4">
-          {todos.map(todo => (
-            <li key={todo.id}>{todo.title}</li>
+          {todos.map((todo: Todo) => (
+            <TodoItem key={todo.id} {...todo} />
           ))}
         </ul>
       </main>
