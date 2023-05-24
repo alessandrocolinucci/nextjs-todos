@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { prisma } from "./database/db";
+import { getTodos } from "./database/prisma.query";
 
 const Home = async () => {
-
-  const todos = await prisma.todo.findMany();
+  
+  const todos = await getTodos();
 
   return (
     <>
